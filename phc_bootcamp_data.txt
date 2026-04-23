@@ -1,0 +1,20 @@
+Pakistan Hindu Council (PHC) - Youth Digital Empowerment Bootcamp
+Website: www.phc.org.pk
+
+About the Bootcamp:
+The Youth Digital Empowerment Bootcamp is designed to master Generative AI and Web Technologies. It aims to empower tomorrow's tech leaders by providing hands-on experience with modern software development.
+
+Curriculum:
+- Module 1: Introduction to Web Technologies (HTML, CSS, JavaScript)
+- Module 2: Python Programming Fundamentals
+- Module 3: Introduction to Generative AI and Prompt Engineering
+- Module 4: Building AI-Powered Web Applications
+
+Registration:
+Registration is currently open. Students can apply via the official website. The deadline for applications is May 15, 2026.
+
+FAQs:
+Q: Who can apply?
+A: Any university student interested in technology can apply.
+Q: Is there a fee?
+A: No, the bootcamp is fully funded by the Pakistan Hindu Council.
