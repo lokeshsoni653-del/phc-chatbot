@@ -5,3 +5,4 @@ langchain-community
 chromadb
 sentence-transformers
 protobuf~=3.20.0
+tavily-python
