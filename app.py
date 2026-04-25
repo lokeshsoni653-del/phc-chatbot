@@ -58,9 +58,7 @@ def load_ai_agent():
 
     )
 
-    # Only send the top 3 most relevant pieces of information instead of 10
    retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
-
     
 
     # Define Tool 1: The local PHC Knowledge Base
