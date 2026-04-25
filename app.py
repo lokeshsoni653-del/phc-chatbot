@@ -5,7 +5,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_community.vectorstores import Chroma
 from langchain_community.tools.tavily_search import TavilySearchResults
-from langchain.tools.retriever import create_retriever_tool
+from langchain_core.tools import create_retriever_tool
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain import hub
 
