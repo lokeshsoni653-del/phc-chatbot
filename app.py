@@ -40,7 +40,7 @@ def load_ai_agent():
     tools = [retriever_tool, search_tool]
 
     # Using Gemini 3 Flash (released April 2026)
-    llm = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite", temperature=0)
+    llm = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite-preview", temperature=0)
     
     prompt = hub.pull("hwchase17/openai-functions-agent")
     agent = create_tool_calling_agent(llm, tools, prompt)
