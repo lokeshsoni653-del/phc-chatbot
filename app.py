@@ -40,7 +40,7 @@ def load_ai_agent():
     tools = [retriever_tool, search_tool]
 
     # Using Gemini 3 Flash (released April 2026)
-    llm = ChatGoogleGenerativeAI(model="gemini-3-flash", temperature=0)
+    llm = ChatGoogleGenerativeAI(model="gemini-3.1-flash", temperature=0)
     
     prompt = hub.pull("hwchase17/openai-functions-agent")
     agent = create_tool_calling_agent(llm, tools, prompt)
@@ -72,7 +72,5 @@ if user_input := st.chat_input("What is your question?"):
             st.markdown(answer)
             st.session_state.messages.append({"role": "assistant", "content": answer})
         except Exception as e:
-            if "ResourceExhausted" in str(e):
-                st.error("Google's daily free limit reached. Please wait until tomorrow or use a different API key.")
-            else:
-                st.error("The system is currently busy. Please wait 30 seconds and try again.")
+        # Replace the entire if/else block with this one line:
+        st.error(f"Actual Error: {str(e)}")
