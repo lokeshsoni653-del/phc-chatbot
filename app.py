@@ -64,13 +64,14 @@ if user_input := st.chat_input("What is your question?"):
     with st.chat_message("user"):
         st.markdown(user_input)
     st.session_state.messages.append({"role": "user", "content": user_input})
-
+    
     with st.chat_message("assistant"):
         try:
+            # This is the "try" block where the work happens
             response = agent_executor.invoke({"input": user_input})
             answer = response["output"]
             st.markdown(answer)
             st.session_state.messages.append({"role": "assistant", "content": answer})
-            except Exception as e:
-            # Manually type 8 spaces before 'st.error' to be 100% safe
+        except Exception as e:
+            # This "except" block only runs if the "try" block fails
             st.error(f"Actual Error: {str(e)}")
