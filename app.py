@@ -72,5 +72,4 @@ if user_input := st.chat_input("What is your question?"):
             st.markdown(answer)
             st.session_state.messages.append({"role": "assistant", "content": answer})
         except Exception as e:
-        # Replace the entire if/else block with this one line:
         st.error(f"Actual Error: {str(e)}")
