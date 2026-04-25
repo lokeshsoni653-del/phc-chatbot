@@ -17,18 +17,35 @@ os.environ["TAVILY_API_KEY"] = st.secrets["TAVILY_API_KEY"]
 # --- 2. INITIALIZE AI AGENT ---
 @st.cache_resource
 def load_ai_agent():
-    # Load and split the local data
-    loader = TextLoader("phc_bootcamp_data.txt")
-    docs = loader.load()
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
-    splits = text_splitter.split_documents(docs)
-    
-    # Create the vectorstore
-    vectorstore = Chroma.from_documents(
-        documents=splits, 
-        embedding=GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
-    )
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
+    # Load and split the local data
+    loader = TextLoader("phc_bootcamp_data.txt", encoding="utf-8")
+    docs = loader.load()
+    
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=80)
+    splits = text_splitter.split_documents(docs)
+    
+    vectorstore = Chroma.from_documents(
+        documents=splits, 
+        embedding=GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-2")
+    )
+    
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
+    
+    retriever_tool = create_retriever_tool(
+        retriever,
+        "phc_knowledge_base",
+        "Use this for any questions about the Pakistan Hindu Council. Be concise."
+    )
+
+    search_tool = TavilySearchResults(k=2)
+    tools = [retriever_tool, search_tool]
+
+    llm = ChatGoogleGenerativeAI(model="gemini-3-flash", temperature=0)
+    
+    prompt = hub.pull("hwchase17/openai-functions-agent")
+    agent = create_tool_calling_agent(llm, tools, prompt)
+    
+    return AgentExecutor(agent=agent, tools=tools, verbose=True, max_iterations=3)
     
     # Define Tool 1: The local PHC Knowledge Base
     retriever_tool = create_retriever_tool(
