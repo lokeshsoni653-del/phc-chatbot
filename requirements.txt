@@ -1,10 +1,7 @@
 streamlit
-langchain<0.3.0
-langchain-community<0.3.0
-langchain-google-genai
-chromadb
-sentence-transformers
-tavily-python
-protobuf~=3.20.0
+langchain
+langchain-community
 langchain-groq
 sentence-transformers
+chromadb
+pypdf
